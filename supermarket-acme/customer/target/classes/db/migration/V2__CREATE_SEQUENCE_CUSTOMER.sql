@@ -1,1 +1,0 @@
-CREATE SEQUENCE customer_id_sequence;
