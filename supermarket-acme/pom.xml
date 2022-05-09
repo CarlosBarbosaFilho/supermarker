@@ -19,6 +19,10 @@
         <maven.compiler.target>17</maven.compiler.target>
         <spring.boot.dependencies.version>2.6.0</spring.boot.dependencies.version>
         <spring.boot.maven.plugin.version>3.8.1</spring.boot.maven.plugin.version>
+        <model.mapper>3.0.0</model.mapper>
+        <flyway.version>5.2.4</flyway.version>
+        <openid.version>1.6.3</openid.version>
+
     </properties>
 
     <dependencyManagement>
@@ -34,6 +38,13 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${openid.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -43,6 +54,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${model.mapper}</version>
+        </dependency>
+
 
     </dependencies>
 
