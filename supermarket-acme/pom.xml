@@ -20,10 +20,12 @@
         <maven.compiler.target>17</maven.compiler.target>
         <spring.boot.dependencies.version>2.6.0</spring.boot.dependencies.version>
         <spring.boot.maven.plugin.version>3.8.1</spring.boot.maven.plugin.version>
+        <spring.cloud.version>2021.0.0</spring.cloud.version>
         <model.mapper>3.0.0</model.mapper>
         <flyway.version>5.2.4</flyway.version>
         <openid.version>1.6.3</openid.version>
         <lombok.version>1.18.22</lombok.version>
+
     </properties>
 
     <dependencyManagement>
@@ -35,7 +37,17 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
+
     </dependencyManagement>
 
     <dependencies>
