@@ -1,0 +1,1 @@
+CREATE SEQUENCE  notification_id_sequence;
