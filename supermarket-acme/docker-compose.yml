@@ -15,6 +15,15 @@ services:
       - 5432:5432
     networks:
       - postgres
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - spring
 networks:
   postgres:
+    driver: bridge
+  spring:
     driver: bridge
