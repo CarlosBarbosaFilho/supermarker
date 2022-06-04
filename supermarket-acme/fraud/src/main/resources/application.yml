@@ -15,6 +15,7 @@ spring:
     username: 'postgres'
   flyway:
     enabled: true
+    baseline-on-migrate: true
   jpa:
     properties:
       hibernate:

@@ -16,6 +16,7 @@
         <module>service-registry</module>
         <module>api-gateway</module>
         <module>clients</module>
+        <module>rabbitmq</module>
     </modules>
 
     <properties>
