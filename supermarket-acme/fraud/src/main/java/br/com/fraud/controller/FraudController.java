@@ -1,9 +1,6 @@
 package br.com.fraud.controller;
 
-import br.com.fraud.controller.response.FraudResponse;
 import br.com.fraud.service.FraudService;
-import lombok.Getter;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
