@@ -16,8 +16,8 @@ public class NotificationPayload {
     private String sender;
     @JsonProperty("customer_email")
     private String customer_email;
-    @JsonProperty("idCustomer")
-    private Long idCustomer;
+    @JsonProperty("customer_cpf")
+    private String customer_cpf;
     @JsonProperty("message")
     private String message;
 }

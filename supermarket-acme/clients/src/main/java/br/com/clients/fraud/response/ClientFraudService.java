@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 )
 public interface ClientFraudService {
 
-    @GetMapping(value = "/is-fraud/{customerId}", consumes = "application/json")
-    InternalResponseFraud isFraud(@PathVariable("customerId") Long customerId);
+    @GetMapping(value = "/is-fraud/{cpf}", consumes = "application/json")
+    InternalResponseFraud isFraud(@PathVariable("cpf") String cpf);
 }

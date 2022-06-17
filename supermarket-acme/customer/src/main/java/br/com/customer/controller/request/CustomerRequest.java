@@ -13,4 +13,5 @@ public class CustomerRequest {
 
     private String name;
     private String email;
+    private String cpf;
 }

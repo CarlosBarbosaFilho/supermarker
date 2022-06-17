@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class InternalResponseFraud {
 
     private Boolean isFraud;
+
+    private String cpf;
 }

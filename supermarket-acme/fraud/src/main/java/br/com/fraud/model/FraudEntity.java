@@ -28,9 +28,9 @@ public class FraudEntity {
 
     private String description;
 
-    private Long customerId;
+    private String customerCpf;
 
-    private boolean isFraud;
+    private boolean isFraud = true;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 }

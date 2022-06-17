@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Columns;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -16,9 +18,6 @@ public class FraudRequest {
 
     private String description;
 
-    private Long customerId;
+    private String customerCpf;
 
-    private boolean isFraud;
-
-    private LocalDateTime createAt;
 }

@@ -4,7 +4,7 @@ version: "3"
 services:
   postgres:
     image: postgres:9.6
-    container_name: "microservice-customer"
+    container_name: "postgres-supermarket-acme"
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
@@ -24,11 +24,13 @@ services:
       - spring
 
   rabbitmq:
-    image: rabbitmq:3.9.1-alpine
-    container_name: rabbitmq
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
     ports:
       - 5672:5672
       - 15672:15672
+    volumes:
+      - ".data/rabbitmq:/var/lib/rabbitmq/data"
     networks:
       - spring
 

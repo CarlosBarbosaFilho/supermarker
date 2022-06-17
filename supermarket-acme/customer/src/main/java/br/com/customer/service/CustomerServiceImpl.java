@@ -8,6 +8,7 @@ import br.com.customer.controller.request.CustomerRequest;
 import br.com.customer.controller.response.CustomerResponse;
 import br.com.customer.model.CustomerEntity;
 import br.com.customer.repository.CustomerRepository;
+import br.com.customer.service.exception.CustomerFraudException;
 import br.com.rabbitmq.RabbitMQMessageProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,33 +33,43 @@ public class CustomerServiceImpl implements  CustomerService{
     }
 
     @Override
-    public CustomerResponse createCustomer(CustomerRequest customerRequest) {
-        log.info("Calling the method to create customer {}", customerRequest);
-        var customerEntity =
-                (CustomerEntity) this.convertUtils.convertRequestToEntity(customerRequest, CustomerEntity.class);
+    public String createCustomer(CustomerRequest customerRequest) {
 
-        var entity = this.customerRepository.save(customerEntity);
-        log.info(String.format("calling fraud service to customerId {}", entity.getId()));
+        var internalResponseFraud = this.clientFraudService.isFraud(customerRequest.getCpf());
 
-//        var internalResponseFraud = this.clientFraudService.isFraud(entity.getId());
-//
-//        log.info(String.format("is fraud {}", internalResponseFraud.getIsFraud()));
+        if (internalResponseFraud != null) {
 
-        // send message to queue
-        var notificationPayload = NotificationPayload
-                .builder()
-                .customer_email(entity.getEmail())
-                .sender(entity.getName())
-                .idCustomer(entity.getId())
-                .message("Carlos send message to queue")
-                .build();
+            log.info(String.format("This document %s to this customer is one fraud ", customerRequest.getCpf()));
 
-        this.rabbitMQMessageProducer.publish(
-                notificationPayload,
-                "internal.exchange",
-                "internal.notification.routing-key"
-        );
+            // send message to queue
+            var notificationPayload = NotificationPayload
+                    .builder()
+                    .customer_email(customerRequest.getEmail())
+                    .sender(customerRequest.getName())
+                    .customer_cpf(customerRequest.getCpf())
+                    .message("Carlos send message to queue")
+                    .build();
 
-        return (CustomerResponse) this.convertUtils.convertEntityToResponse(entity, CustomerResponse.class);
+            this.rabbitMQMessageProducer.publish(
+                    notificationPayload,
+                    "internal.exchange",
+                    "internal.notification.routing-k ey"
+            );
+
+           return ("The customer is a fraud, cpf :" + customerRequest.getCpf());
+
+        } else {
+            log.info("Calling the method to create customer {}", customerRequest);
+            var customerEntity =
+                    (CustomerEntity) this.convertUtils.convertRequestToEntity(customerRequest, CustomerEntity.class);
+
+            var entity = this.customerRepository.save(customerEntity);
+            log.info(String.format("calling fraud service to customerId {}", entity.getCpf()));
+
+            this.convertUtils.convertEntityToResponse(entity, CustomerResponse.class);
+
+            return "Customer created with success";
+        }
+
     }
 }

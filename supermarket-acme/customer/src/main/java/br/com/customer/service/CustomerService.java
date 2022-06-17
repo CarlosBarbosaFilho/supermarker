@@ -6,5 +6,5 @@ import br.com.customer.model.CustomerEntity;
 
 public interface CustomerService {
 
-    CustomerResponse createCustomer(CustomerRequest customerRequest);
+    String createCustomer(CustomerRequest customerRequest);
 }

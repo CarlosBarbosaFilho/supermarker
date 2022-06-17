@@ -14,4 +14,6 @@ import java.time.LocalDateTime;
 public class FraudResponse {
 
     private boolean isFraud;
+
+    private String cpf;
 }
