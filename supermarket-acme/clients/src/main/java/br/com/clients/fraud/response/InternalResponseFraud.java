@@ -12,4 +12,5 @@ public class InternalResponseFraud {
     private Boolean isFraud;
 
     private String cpf;
+
 }

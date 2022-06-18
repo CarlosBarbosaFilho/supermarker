@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements  CustomerService{
                     .customer_email(customerRequest.getEmail())
                     .sender(customerRequest.getName())
                     .customer_cpf(customerRequest.getCpf())
-                    .message("Carlos send message to queue")
+                    .message(customerRequest.getName())
                     .build();
 
             this.rabbitMQMessageProducer.publish(
