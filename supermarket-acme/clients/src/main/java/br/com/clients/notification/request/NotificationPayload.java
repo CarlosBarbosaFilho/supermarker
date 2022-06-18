@@ -12,12 +12,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class NotificationPayload {
 
-    @JsonProperty("sender")
     private String sender;
-    @JsonProperty("customer_email")
     private String customer_email;
-    @JsonProperty("customer_cpf")
     private String customer_cpf;
-    @JsonProperty("message")
     private String message;
 }
