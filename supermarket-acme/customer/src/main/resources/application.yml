@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8085
 spring:
   application:
     name: microservice-customer
@@ -29,3 +29,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health, metrics'

@@ -7,9 +7,9 @@ import br.com.notification.service.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 @AllArgsConstructor
@@ -20,17 +20,15 @@ public class NotificationConsumer {
 
     @RabbitListener(queues = "${rabbitmq.queue.notification}")
     public void consumer(NotificationPayload notificationResponseMessage) {
-        log.info("Consumed {} from queue", notificationResponseMessage);
         this.notificationService.createNotification(convertPayloadToNotification(notificationResponseMessage));
     }
 
+    @Bean
+    public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
     private NotificationRequest convertPayloadToNotification(NotificationPayload notificationPayload) {
-//        return NotificationRequest.builder()
-//                .customer_email(notificationPayload.getCustomer_email())
-//                .cpf_customer(notificationPayload.getCustomer_cpf())
-//                .sender(notificationPayload.getSender())
-//                .message(notificationPayload.getMessage())
-//                .build();
 
         var request = new NotificationRequest();
         request.setCpf_customer(notificationPayload.getCustomer_cpf());
