@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class NotificationServiceImpl implements  NotificationService {
+public class NotificationServiceImpl implements NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final ConvertUtils convertUtils;
@@ -28,6 +28,6 @@ public class NotificationServiceImpl implements  NotificationService {
 
     @Override
     public List<NotificationResponse> list() {
-         return convertUtils.convertToListResponse(this.notificationRepository.findAll(), NotificationResponse.class);
+        return convertUtils.convertToListResponse(this.notificationRepository.findAll(), NotificationResponse.class);
     }
 }

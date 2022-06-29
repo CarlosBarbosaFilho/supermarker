@@ -18,7 +18,7 @@ public class NotificationConsumer {
 
     private final NotificationService notificationService;
 
-    @RabbitListener(queues = "${rabbitmq.queue.notification}")
+    @RabbitListener ( queues = "${rabbitmq.queue.notification}" )
     public void consumer(NotificationPayload notificationResponseMessage) {
         this.notificationService.createNotification(convertPayloadToNotification(notificationResponseMessage));
     }

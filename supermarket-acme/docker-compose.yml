@@ -1,6 +1,19 @@
-
 version: "3"
+volumes:
+  prometheus_data:
+
 services:
+  redis:
+    image: redis
+    container_name: redis
+    command: redis-server --requirepass 1234 --appendonly yes
+    hostname: localhost
+    ports:
+      - 6379:6379
+    volumes:
+      - "./redis/supermarket:/var/lib/postgresql/data"
+    networks:
+      - redis
   postgres:
     image: postgres:9.6
     container_name: "supermarket-acme"
@@ -32,11 +45,26 @@ services:
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
       - rabbitmq
-
+#  prometheus:
+#    image: prom/prometheus:latest
+#    container_name: prometheus
+#    volumes:
+#      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+#      - prometheus_data:/prometheus
+#    command:
+#      - "--config.file=/etc/prometheus/prometheus.yml"
+#    ports:
+#      - "9090:9090"
+#    networks:
+#      - prometheus
 networks:
   zippkin:
     driver: bridge
   postgres:
     driver: bridge
   rabbitmq:
+    driver: bridge
+#  prometheus:
+#    driver: bridge
+  redis:
     driver: bridge

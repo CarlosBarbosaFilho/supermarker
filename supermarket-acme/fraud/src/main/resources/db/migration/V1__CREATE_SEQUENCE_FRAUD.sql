@@ -1,1 +1,1 @@
-CREATE SEQUENCE  fraud_id_sequence;
+CREATE SEQUENCE fraud_id_sequence;

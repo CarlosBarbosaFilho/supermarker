@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public record ConvertUtils<T> (ModelMapperConfiguration modelMapperConfiguration) {
+public record ConvertUtils<T>(ModelMapperConfiguration modelMapperConfiguration) {
 
-    public T convertRequestToEntity (T request, Class<T> type) {
+    public T convertRequestToEntity(T request, Class<T> type) {
         return modelMapperConfiguration.modelMapper().map(request, type);
     }
 

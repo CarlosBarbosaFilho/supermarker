@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class CustomerServiceImpl implements  CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     private Logger logger = LogManager.getLogger(CustomerServiceImpl.class);
 
@@ -64,7 +64,7 @@ public class CustomerServiceImpl implements  CustomerService{
             );
 
             logger.trace("The customer is a fraud, CPF {}", customerRequest.getCpf());
-           return ("The customer is a fraud, cpf :" + customerRequest.getCpf());
+            return ("The customer is a fraud, cpf :" + customerRequest.getCpf());
 
         } else {
             logger.trace("Calling the method to create customer {}", customerRequest);

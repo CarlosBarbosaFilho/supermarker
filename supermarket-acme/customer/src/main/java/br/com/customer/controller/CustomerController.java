@@ -15,8 +15,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1/customers")
-@Tag(name = "Api to management customers", description = "Create and management customers")
+@RequestMapping ( "/api/v1/customers" )
+@Tag ( name = "Api to management customers", description = "Create and management customers" )
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -27,16 +27,16 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @Operation(summary = "create customer", description = "create customer to fraud system")
-    @ApiResponse(responseCode = "201", description = "Customer success created")
+    @Operation ( summary = "create customer", description = "create customer to fraud system" )
+    @ApiResponse ( responseCode = "201", description = "Customer success created" )
     @PostMapping
     public ResponseEntity<String> createCustomer(@RequestBody CustomerRequest customerRequest) {
         logger.trace("Customer CPF: {}", customerRequest.getCpf());
         return ResponseEntity.ok(this.customerService.createCustomer(customerRequest));
     }
 
-    @Operation(summary = "list customer", description = "list all customers")
-    @ApiResponse(responseCode = "200", description = "Customer listed with success")
+    @Operation ( summary = "list customer", description = "list all customers" )
+    @ApiResponse ( responseCode = "200", description = "Customer listed with success" )
     @GetMapping
     public ResponseEntity<List<CustomerResponse>> listCustomers() {
         return ResponseEntity.ok(this.customerService.listCustomers());

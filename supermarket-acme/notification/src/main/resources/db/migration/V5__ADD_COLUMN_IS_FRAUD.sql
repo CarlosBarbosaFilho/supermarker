@@ -1,1 +1,2 @@
-ALTER TABLE tb_notification ADD COLUMN fraud BOOLEAN;
+ALTER TABLE tb_notification
+    ADD COLUMN fraud BOOLEAN;

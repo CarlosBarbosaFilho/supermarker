@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/notifications")
-@Tag(name = "Notification API")
+@RequestMapping ( "/api/v1/notifications" )
+@Tag ( name = "Notification API" )
 public class NotificationController {
 
     private final NotificationService service;
@@ -22,13 +22,13 @@ public class NotificationController {
         this.service = service;
     }
 
-    @ResponseStatus( HttpStatus.CREATED)
+    @ResponseStatus ( HttpStatus.CREATED )
     @PostMapping
     public void createNotification(@RequestBody NotificationRequest request) {
         this.service.createNotification(request);
     }
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus ( HttpStatus.OK )
     @GetMapping
     public ResponseEntity<List<NotificationResponse>> notifications() {
         return new ResponseEntity<List<NotificationResponse>>(this.service.list(), HttpStatus.OK);

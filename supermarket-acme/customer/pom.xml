@@ -17,10 +17,17 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring.boot.maven.plugin>2.6.2</spring.boot.maven.plugin>
+        <micrometer.version>1.8.2</micrometer.version>
     </properties>
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>${micrometer.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

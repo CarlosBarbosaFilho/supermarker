@@ -17,6 +17,7 @@
         <module>api-gateway</module>
         <module>clients</module>
         <module>rabbitmq</module>
+        <module>cache</module>
     </modules>
 
     <properties>

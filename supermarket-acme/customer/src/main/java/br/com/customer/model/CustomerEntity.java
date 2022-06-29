@@ -10,17 +10,17 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tb_customer")
+@Table ( name = "tb_customer" )
 public class CustomerEntity {
 
 
     @Id
-    @SequenceGenerator(
+    @SequenceGenerator (
             name = "customer_id_sequence",
             sequenceName = "customer_id_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(
+    @GeneratedValue (
             strategy = GenerationType.SEQUENCE,
             generator = "customer_id_sequence"
     )

@@ -3,6 +3,7 @@ package br.com.fraud.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,8 +12,8 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table (name = "tb_fraud")
-public class FraudEntity {
+@Table ( name = "tb_fraud" )
+public class FraudEntity implements Serializable {
 
     @Id
     @SequenceGenerator (
